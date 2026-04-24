@@ -1,29 +1,29 @@
-﻿# HeartWatch MCS Dashboard
+# HeartWatch MCS Dashboard
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 
-🏥 **A real-time medical monitoring dashboard for Abbott HeartMate 3 LVAD patients**
+?? **A real-time medical monitoring dashboard for Abbott HeartMate 3 LVAD patients**
 
-## 🌐 Live Demo
+## ?? Live Demo
 
 - **Custom Domain:** https://demo.heartwatch.dev
 - **GitHub Pages:** https://devmode2025.github.io/heartwatch-demo/
 
-## 📋 Overview
+## ?? Overview
 
 HeartWatch MCS Dashboard is a professional Angular 17 application demonstrating real-time patient monitoring for mechanical circulatory support (MCS) devices. Built with modern web technologies, it showcases healthcare-specific UI/UX patterns and state management.
 
-### ✨ Current Features
+### ? Current Features
 
-- 📊 **Real-time Vitals Monitoring** - Heart rate, blood pressure, temperature, SpO₂ (updates every 5 seconds)
-- 🚨 **Alert Banner System** - Critical and warning alerts with acknowledge/dismiss functionality
-- 💉 **Patient Summary** - Demographics, medical record, assigned physician
-- 🔋 **Device Status** - Battery level, pump speed, flow rate monitoring
-- 🎨 **Responsive Design** - Mobile, tablet, and desktop optimized
-- 🟢🟡🔴 **Color-coded Thresholds** - Visual status indicators for clinical values
-- ⚡ **Fast Performance** - Optimized bundle (~89 KB gzipped)
+- ?? **Real-time Vitals Monitoring** - Heart rate, blood pressure, temperature, SpO2 (updates every 5 seconds)
+- ?? **Alert Banner System** - Critical and warning alerts with acknowledge/dismiss functionality
+- ?? **Patient Summary** - Demographics, medical record, assigned physician
+- ?? **Device Status** - Battery level, pump speed, flow rate monitoring
+- ?? **Responsive Design** - Mobile, tablet, and desktop optimized
+- ?????? **Color-coded Thresholds** - Visual status indicators for clinical values
+- ? **Fast Performance** - Optimized bundle (~89 KB gzipped)
 
-### 🛠️ Technical Stack
+### ??? Technical Stack
 
 - **Framework:** Angular 17.3 (Standalone Components)
 - **Build Tool:** NX 18 (Monorepo)
@@ -33,7 +33,7 @@ HeartWatch MCS Dashboard is a professional Angular 17 application demonstrating 
 - **Styling:** SCSS with CSS Grid
 - **Deployment:** GitHub Pages with custom domain
 
-## 🚀 Quick Start
+## ?? Quick Start
 
 ### Development Server
 
@@ -68,28 +68,28 @@ npx gh-pages -d dist/heartwatch-demo/browser -b gh-pages
 
 See `DEPLOYMENT.md` for detailed deployment instructions.
 
-## 📁 Project Structure
+## ?? Project Structure
 
 ```
 src/
-├── app/
-│   ├── core/
-│   │   ├── models/          # Data models (Patient, Vitals, Device, Alert)
-│   │   └── services/        # Mock data service with real-time stream
-│   ├── store/
-│   │   ├── device/          # Device state (NgRx)
-│   │   ├── patient/         # Patient & vitals state (NgRx)
-│   │   └── alerts/          # Alerts & notes state (NgRx)
-│   ├── dashboard/
-│   │   ├── patient-summary/ # Patient info component
-│   │   ├── device-status/   # Device metrics component
-│   │   └── vitals-panel/    # Real-time vitals component
-│   └── shared/
-│       └── components/
-│           └── alert-banner/ # Alert notification system
++-- app/
+�   +-- core/
+�   �   +-- models/          # Data models (Patient, Vitals, Device, Alert)
+�   �   +-- services/        # Mock data service with real-time stream
+�   +-- store/
+�   �   +-- device/          # Device state (NgRx)
+�   �   +-- patient/         # Patient & vitals state (NgRx)
+�   �   +-- alerts/          # Alerts & notes state (NgRx)
+�   +-- dashboard/
+�   �   +-- patient-summary/ # Patient info component
+�   �   +-- device-status/   # Device metrics component
+�   �   +-- vitals-panel/    # Real-time vitals component
+�   +-- shared/
+�       +-- components/
+�           +-- alert-banner/ # Alert notification system
 ```
 
-## 🔧 Architecture
+## ?? Architecture
 
 ### State Management Flow
 
@@ -108,30 +108,30 @@ src/
 
 **Blood Pressure:**
 - Normal: <160/<100 mmHg
-- Warning: ≥160/≥100 mmHg
-- Critical: ≥180/≥110 mmHg
+- Warning: =160/=100 mmHg
+- Critical: =180/=110 mmHg
 
 **Device Battery:**
 - Normal: >30%
 - Warning: <30%
 - Critical: <15%
 
-## 🔮 Future Features
+## ?? Future Features
 
-### Phase 4: Data Visualization (3-4 hours)
+### Phase 4: Data Visualization
 **Priority: P1**
 
-- 📈 **ECharts Integration** - Professional line charts for vital signs trends
+- ?? **ECharts Integration** - Professional line charts for vital signs trends
   - Multi-series support (HR, BP, Temp on same graph)
   - Smooth animations and transitions
-- ⏱️ **Time Range Selector** - 1hr / 8hr / 24hr views
+- ?? **Time Range Selector** - 1hr / 8hr / 24hr views
   - Dynamic data loading based on selected range
   - Zoom and pan capabilities
-- 📊 **Interactive Features**
+- ?? **Interactive Features**
   - Tooltips showing exact values on hover
   - Legend toggle to show/hide series
   - Export chart as image
-- 🔄 **Real-time Updates** - Chart updates as new data arrives
+- ?? **Real-time Updates** - Chart updates as new data arrives
   - Smooth data point addition
   - Automatic axis rescaling
 
@@ -148,26 +148,26 @@ provideEcharts()
 
 ---
 
-### Phase 5: Interactive Features (2-3 hours)
+### Phase 5: Interactive Features
 **Priority: P2**
 
-- 📝 **Add Patient Notes Modal**
+- ?? **Add Patient Notes Modal**
   - Reactive forms with validation
   - Note type selector (Clinical, Administrative, Alert Response)
   - Rich text input with character counter
-- 📋 **Notes List Component**
+- ?? **Notes List Component**
   - Display recent notes (latest 10)
   - Filter by note type
   - Timestamp and author information
-- ✏️ **Form Validation**
+- ?? **Form Validation**
   - Required fields (note text, type)
   - Max length validation (500 characters)
   - Custom validators for medical terminology
-- 💾 **Persistence**
+- ?? **Persistence**
   - Save notes to NgRx alerts store
   - Link notes to specific alerts
   - Export notes history
-- 🕐 **Metadata Tracking**
+- ?? **Metadata Tracking**
   - Created timestamp
   - Author/clinician name
   - Related alert ID
@@ -194,45 +194,45 @@ export const addNote = createAction(
 
 ---
 
-### Phase 6: Testing & Polish (4-5 hours)
+### Phase 6: Testing & Polish
 **Priority: P1**
 
-- ✅ **Unit Tests**
+- ? **Unit Tests**
   - Component tests with TestBed
   - Service tests with mock data
   - Reducer tests for state mutations
   - Selector tests for memoization
   - Target: 80%+ code coverage
   
-- 🧪 **Integration Tests**
+- ?? **Integration Tests**
   - NgRx effects testing with marble diagrams
   - End-to-end data flow tests
   - Mock HTTP requests for future API integration
   
-- 🎨 **UI Polish**
+- ?? **UI Polish**
   - Smooth animations for alerts (slide in/out)
   - Vitals card flip animations
   - Loading skeleton screens
   - Micro-interactions (button hover states, ripples)
   
-- 🔄 **Loading States**
+- ?? **Loading States**
   - Spinner during initial data load
   - Skeleton loaders for vitals/device
   - Progress indicators for notes submission
   
-- ⚠️ **Error Handling**
+- ?? **Error Handling**
   - Graceful error boundaries
   - Retry mechanisms for failed data loads
   - User-friendly error messages
   - Fallback UI components
   
-- 📱 **Mobile Optimization**
+- ?? **Mobile Optimization**
   - Touch-friendly tap targets (min 44x44px)
   - Swipe gestures for alert dismissal
   - Optimized layouts for small screens
   - Bottom sheet for notes modal on mobile
   
-- ♿ **Accessibility**
+- ? **Accessibility**
   - ARIA labels for all interactive elements
   - Keyboard navigation support (Tab, Enter, Escape)
   - Screen reader announcements for alerts
@@ -253,27 +253,27 @@ npx nx test heartwatch-demo --coverage
 
 ---
 
-### Estimated Total Time: 10-12 hours
+### 
 
 These enhancements would transform the demo into a production-ready application with:
 - Professional data visualization capabilities
 - Complete clinical workflow support
 - Enterprise-grade quality and reliability
 
-## 📚 Documentation
+## ?? Documentation
 
 - **DEPLOYMENT.md** - Detailed deployment guide
 - **DEV_PLAN.md** - Original development roadmap (if exists)
 
-## 🤝 Contributing
+## ?? Contributing
 
 This is a demo project for interview purposes. Not open for contributions.
 
-## 📄 License
+## ?? License
 
 MIT License - See LICENSE file for details
 
-## 👤 Author
+## ?? Author
 
 Built for Abbott medical device interview demonstration
 
