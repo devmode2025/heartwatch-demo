@@ -55,7 +55,14 @@ Build artifacts are stored in `dist/heartwatch-demo/browser/`
 
 ### Deploy to GitHub Pages
 
-**Automated (Recommended):**
+**Automated CI/CD Pipeline (Recommended):**
+
+The project includes automated deployment with quality gates:
+- ✅ **ESLint** - Code quality checks
+- ✅ **Prettier** - Code formatting checks
+- ✅ **Production Build** - Optimized Angular build
+- ✅ **Auto-Deploy** - Deploys to GitHub Pages
+
 ```bash
 # Just push to main - GitHub Actions handles the rest!
 git add .
@@ -77,6 +84,57 @@ npx gh-pages -d dist/heartwatch-demo/browser -b gh-pages
 
 See `DEPLOYMENT.md` for detailed deployment instructions.
 
+## âœ… CI/CD Quality Checks
+
+The automated deployment pipeline enforces code quality:
+
+- **ESLint** - Code quality and best practices
+- **Prettier** - Consistent code formatting
+- **Production Build** - Verifies build succeeds
+
+**Failed checks automatically block deployment.**
+
+**Run checks locally before pushing:**
+```bash
+# Lint code
+npx nx lint heartwatch-demo
+
+# Auto-fix linting issues
+npx nx lint heartwatch-demo --fix
+
+# Check formatting
+npx prettier --check "src/**/*.{ts,html,scss,css,json}"
+
+# Auto-format code
+npx prettier --write "src/**/*.{ts,html,scss,css,json}"
+```
+
+
+
+## ✅ CI/CD Quality Checks
+
+The automated deployment pipeline enforces code quality:
+
+- **ESLint** - Code quality and best practices
+- **Prettier** - Consistent code formatting
+- **Production Build** - Verifies build succeeds
+
+**Failed checks automatically block deployment.**
+
+**Run checks locally before pushing:**
+```bash
+# Lint code
+npx nx lint heartwatch-demo
+
+# Auto-fix linting issues
+npx nx lint heartwatch-demo --fix
+
+# Check formatting
+npx prettier --check "src/**/*.{ts,html,scss,css,json}"
+
+# Auto-format code
+npx prettier --write "src/**/*.{ts,html,scss,css,json}"
+```
 ## 📁 Project Structure
 
 ```

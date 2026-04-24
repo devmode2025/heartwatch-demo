@@ -6,7 +6,14 @@
 
 **GitHub Actions automatically deploys on every push to main!**
 
-The project now includes a GitHub Actions workflow (.github/workflows/deploy.yml) that automatically:
+The project includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that runs quality checks and automated deployment:
+
+**Quality Gates (must pass before deployment):**
+1. ✅ **ESLint** - Enforces code quality standards
+2. ✅ **Prettier** - Enforces consistent code formatting
+3. ✅ **Build** - Verifies production build succeeds
+
+**Then automatically:**
 1. Builds the application
 2. Copies the CNAME file  
 3. Deploys to GitHub Pages
