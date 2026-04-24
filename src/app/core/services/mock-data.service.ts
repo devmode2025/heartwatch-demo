@@ -37,6 +37,8 @@ export class MockDataService {
     nextMaintenanceDue: new Date('2024-06-01')
   };
 
+  private updateCounter = 0;
+
   constructor() { }
 
   getPatient(): Patient {
@@ -55,22 +57,63 @@ export class MockDataService {
   }
 
   private generateRandomVitals(): Vitals {
-    const baseHR = 75;
-    const baseSystolic = 120;
-    const baseDiastolic = 80;
-    const baseTemp = 37.0;
+    this.updateCounter++;
+    
+    // Every 3rd update, generate concerning vitals to trigger alerts
+    const shouldGenerateAlert = this.updateCounter % 3 === 0;
+    
+    let heartRate: number;
+    let systolic: number;
+    let diastolic: number;
+    
+    if (shouldGenerateAlert) {
+      // Generate out-of-range values to trigger alerts
+      const alertType = Math.floor(Math.random() * 4);
+      
+      switch (alertType) {
+        case 0: // High heart rate (warning)
+          heartRate = this.randomInRange(135, 145);
+          systolic = this.randomInRange(110, 130);
+          diastolic = this.randomInRange(70, 90);
+          break;
+        case 1: // Very high heart rate (critical)
+          heartRate = this.randomInRange(155, 165);
+          systolic = this.randomInRange(110, 130);
+          diastolic = this.randomInRange(70, 90);
+          break;
+        case 2: // High blood pressure (warning)
+          heartRate = this.randomInRange(70, 90);
+          systolic = this.randomInRange(165, 175);
+          diastolic = this.randomInRange(105, 115);
+          break;
+        case 3: // Low heart rate (warning)
+          heartRate = this.randomInRange(45, 48);
+          systolic = this.randomInRange(110, 130);
+          diastolic = this.randomInRange(70, 90);
+          break;
+        default:
+          heartRate = this.randomInRange(60, 130);
+          systolic = this.randomInRange(110, 140);
+          diastolic = this.randomInRange(70, 90);
+      }
+    } else {
+      // Normal values
+      heartRate = this.randomInRange(65, 95);
+      systolic = this.randomInRange(110, 140);
+      diastolic = this.randomInRange(70, 90);
+    }
 
     return {
       patientId: 'P001',
       timestamp: new Date(),
-      heartRate: this.randomInRange(baseHR - 15, baseHR + 55),
+      heartRate: heartRate,
       bloodPressure: {
-        systolic: this.randomInRange(baseSystolic - 10, baseSystolic + 40),
-        diastolic: this.randomInRange(baseDiastolic - 10, baseDiastolic + 20)
+        systolic: systolic,
+        diastolic: diastolic
       },
-      temperature: this.randomInRange(baseTemp - 0.5, baseTemp + 1.0, 1),
-      oxygenSaturation: this.randomInRange(95, 99),
-      respiratoryRate: this.randomInRange(12, 20)
+      temperature: this.randomInRange(36.5, 37.5, 1),
+      oxygenSaturation: this.randomInRange(96, 99),
+      respiratoryRate: this.randomInRange(14, 18)
     };
   }
 
