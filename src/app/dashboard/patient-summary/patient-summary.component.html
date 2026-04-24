@@ -3,7 +3,7 @@
     <h2 class="patient-name">{{ patient.firstName }} {{ patient.lastName }}</h2>
     <span class="patient-mrn">MRN: {{ patient.medicalRecordNumber }}</span>
   </div>
-  
+
   <div class="patient-details">
     <div class="detail-item">
       <span class="label">Age:</span>
@@ -22,9 +22,9 @@
       <span class="value">{{ patient.assignedPhysician }}</span>
     </div>
   </div>
-  
+
   <div class="last-updated" *ngIf="lastUpdated">
     <span class="update-label">Last Updated:</span>
-    <span class="update-time">{{ lastUpdated | date:'short' }}</span>
+    <span class="update-time">{{ lastUpdated | date : 'short' }}</span>
   </div>
 </div>

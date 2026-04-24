@@ -19,6 +19,6 @@ export const appConfig: ApplicationConfig = {
       autoPause: true,
       trace: false,
       traceLimit: 75,
-    })
+    }),
   ],
 };

@@ -9,7 +9,7 @@ export interface AlertsState {
 
 export const initialState: AlertsState = {
   alerts: [],
-  notes: []
+  notes: [],
 };
 
 let alertIdCounter = 1;
@@ -25,37 +25,40 @@ export const alertsReducer = createReducer(
         ...alert,
         id: `alert-${alertIdCounter++}`,
         timestamp: new Date(),
-        acknowledged: false
-      } as Alert
-    ]
+        acknowledged: false,
+      } as Alert,
+    ],
   })),
   on(AlertsActions.addAlerts, (state, { alerts }) => ({
     ...state,
     alerts: [
       ...state.alerts,
-      ...alerts.map(alert => ({
-        ...alert,
-        id: `alert-${alertIdCounter++}`,
-        timestamp: new Date(),
-        acknowledged: false
-      } as Alert))
-    ]
+      ...alerts.map(
+        (alert) =>
+          ({
+            ...alert,
+            id: `alert-${alertIdCounter++}`,
+            timestamp: new Date(),
+            acknowledged: false,
+          } as Alert)
+      ),
+    ],
   })),
   on(AlertsActions.acknowledgeAlert, (state, { alertId }) => ({
     ...state,
-    alerts: state.alerts.map(alert =>
+    alerts: state.alerts.map((alert) =>
       alert.id === alertId
         ? { ...alert, acknowledged: true, acknowledgedAt: new Date() }
         : alert
-    )
+    ),
   })),
   on(AlertsActions.clearAlert, (state, { alertId }) => ({
     ...state,
-    alerts: state.alerts.filter(alert => alert.id !== alertId)
+    alerts: state.alerts.filter((alert) => alert.id !== alertId),
   })),
   on(AlertsActions.clearAllAlerts, (state) => ({
     ...state,
-    alerts: []
+    alerts: [],
   })),
   on(AlertsActions.addNote, (state, { note }) => ({
     ...state,
@@ -64,8 +67,8 @@ export const alertsReducer = createReducer(
       {
         ...note,
         id: `note-${noteIdCounter++}`,
-        createdAt: new Date()
-      } as Note
-    ]
+        createdAt: new Date(),
+      } as Note,
+    ],
   }))
 );

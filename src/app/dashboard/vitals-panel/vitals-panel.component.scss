@@ -3,7 +3,7 @@
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
+
   h3 {
     margin: 0 0 1.5rem;
     color: #0054a6;
@@ -24,17 +24,17 @@
   border-radius: 8px;
   background: #f8f9fa;
   border: 2px solid transparent;
-  
+
   &.status-warning {
     background: #fff3cd;
     border-color: #ffc107;
   }
-  
+
   &.status-critical {
     background: #f8d7da;
     border-color: #dc3545;
   }
-  
+
   &.status-normal {
     background: #d4edda;
     border-color: #28a745;

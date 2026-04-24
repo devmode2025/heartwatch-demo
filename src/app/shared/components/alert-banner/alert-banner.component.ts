@@ -4,7 +4,11 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from '../../../store';
 import { Alert } from '../../../core/models/alert.model';
-import { selectActiveAlerts, selectCriticalAlerts, selectWarningAlerts } from '../../../store/alerts/alerts.selectors';
+import {
+  selectActiveAlerts,
+  selectCriticalAlerts,
+  selectWarningAlerts,
+} from '../../../store/alerts/alerts.selectors';
 import * as AlertsActions from '../../../store/alerts/alerts.actions';
 
 @Component({
@@ -13,7 +17,7 @@ import * as AlertsActions from '../../../store/alerts/alerts.actions';
   imports: [CommonModule],
   templateUrl: './alert-banner.component.html',
   styleUrls: ['./alert-banner.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AlertBannerComponent {
   activeAlerts$: Observable<Alert[]>;
@@ -36,10 +40,14 @@ export class AlertBannerComponent {
 
   getAlertIcon(severity: string): string {
     switch (severity) {
-      case 'critical': return '🚨';
-      case 'warning': return '⚠️';
-      case 'info': return 'ℹ️';
-      default: return '🔔';
+      case 'critical':
+        return '🚨';
+      case 'warning':
+        return '⚠️';
+      case 'info':
+        return 'ℹ️';
+      default:
+        return '🔔';
     }
   }
 
@@ -48,11 +56,11 @@ export class AlertBannerComponent {
     const diff = now.getTime() - new Date(timestamp).getTime();
     const seconds = Math.floor(diff / 1000);
     const minutes = Math.floor(seconds / 60);
-    
+
     if (minutes < 1) return 'Just now';
     if (minutes === 1) return '1 min ago';
     if (minutes < 60) return `${minutes} mins ago`;
-    
+
     const hours = Math.floor(minutes / 60);
     if (hours === 1) return '1 hour ago';
     return `${hours} hours ago`;

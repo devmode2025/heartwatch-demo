@@ -10,24 +10,21 @@
   <div class="dashboard-grid">
     <!-- Patient Summary - Full width top -->
     <div class="grid-item patient-summary-section">
-      <app-patient-summary 
+      <app-patient-summary
         [patient]="patient$ | async"
-        [lastUpdated]="(vitals$ | async)?.timestamp || null">
+        [lastUpdated]="(vitals$ | async)?.timestamp || null"
+      >
       </app-patient-summary>
     </div>
 
     <!-- Device Status - Left column -->
     <div class="grid-item device-section">
-      <app-device-status 
-        [device]="device$ | async">
-      </app-device-status>
+      <app-device-status [device]="device$ | async"> </app-device-status>
     </div>
 
     <!-- Vitals Panel - Right column -->
     <div class="grid-item vitals-section">
-      <app-vitals-panel 
-        [vitals]="vitals$ | async">
-      </app-vitals-panel>
+      <app-vitals-panel [vitals]="vitals$ | async"> </app-vitals-panel>
     </div>
 
     <!-- Trend Chart Placeholder - Full width -->

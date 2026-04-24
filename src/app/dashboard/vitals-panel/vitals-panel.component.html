@@ -1,26 +1,40 @@
 <div class="vitals-panel" *ngIf="vitals">
   <h3>Current Vitals</h3>
-  
+
   <div class="vitals-grid">
-    <div class="vital-card" [ngClass]="'status-' + getHRStatus(vitals.heartRate)">
+    <div
+      class="vital-card"
+      [ngClass]="'status-' + getHRStatus(vitals.heartRate)"
+    >
       <div class="vital-icon">??</div>
       <div class="vital-label">Heart Rate</div>
       <div class="vital-value">{{ vitals.heartRate }}</div>
       <div class="vital-unit">bpm</div>
     </div>
 
-    <div class="vital-card" [ngClass]="'status-' + getBPStatus(vitals.bloodPressure.systolic, vitals.bloodPressure.diastolic)">
+    <div
+      class="vital-card"
+      [ngClass]="
+        'status-' +
+        getBPStatus(
+          vitals.bloodPressure.systolic,
+          vitals.bloodPressure.diastolic
+        )
+      "
+    >
       <div class="vital-icon">??</div>
       <div class="vital-label">Blood Pressure</div>
-      <div class="vital-value">{{ vitals.bloodPressure.systolic }}/{{ vitals.bloodPressure.diastolic }}</div>
+      <div class="vital-value">
+        {{ vitals.bloodPressure.systolic }}/{{ vitals.bloodPressure.diastolic }}
+      </div>
       <div class="vital-unit">mmHg</div>
     </div>
 
     <div class="vital-card">
       <div class="vital-icon">???</div>
       <div class="vital-label">Temperature</div>
-      <div class="vital-value">{{ vitals.temperature | number:'1.1-1' }}</div>
-      <div class="vital-unit">°C</div>
+      <div class="vital-value">{{ vitals.temperature | number : '1.1-1' }}</div>
+      <div class="vital-unit">ï¿½C</div>
     </div>
 
     <div class="vital-card" *ngIf="vitals.oxygenSaturation">
@@ -30,8 +44,6 @@
       <div class="vital-unit">%</div>
     </div>
   </div>
-  
-  <div class="timestamp">
-    Updated: {{ vitals.timestamp | date:'short' }}
-  </div>
+
+  <div class="timestamp">Updated: {{ vitals.timestamp | date : 'short' }}</div>
 </div>

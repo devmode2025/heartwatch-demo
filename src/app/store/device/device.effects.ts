@@ -9,7 +9,6 @@ import { DEFAULT_DEVICE_THRESHOLDS } from '../../core/models/device.model';
 
 @Injectable()
 export class DeviceEffects {
-
   loadDevice$ = createEffect(() =>
     this.actions$.pipe(
       ofType(DeviceActions.loadDevice),
@@ -17,7 +16,7 @@ export class DeviceEffects {
         const device = this.mockDataService.getDevice();
         return of(DeviceActions.loadDeviceSuccess({ device }));
       }),
-      catchError((error) => 
+      catchError((error) =>
         of(DeviceActions.loadDeviceFailure({ error: error.message }))
       )
     )
@@ -29,17 +28,24 @@ export class DeviceEffects {
       map(({ device }) => {
         const alerts = [];
 
-        if (device.batteryLevel < DEFAULT_DEVICE_THRESHOLDS.batteryLevelCritical) {
+        if (
+          device.batteryLevel < DEFAULT_DEVICE_THRESHOLDS.batteryLevelCritical
+        ) {
           alerts.push({
             type: 'device_battery_critical' as const,
             severity: 'critical' as const,
             title: 'Critical Battery Level',
-            message: `Device battery at ${device.batteryLevel}%`
+            message: `Device battery at ${device.batteryLevel}%`,
           });
         }
 
         return alerts.length > 0
-          ? AlertActions.addAlerts({ alerts: alerts.map(a => ({ ...a, patientId: device.patientId })) })
+          ? AlertActions.addAlerts({
+              alerts: alerts.map((a) => ({
+                ...a,
+                patientId: device.patientId,
+              })),
+            })
           : { type: '[Device] No Alerts' };
       })
     )

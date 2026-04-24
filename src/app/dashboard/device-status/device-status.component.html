@@ -20,14 +20,18 @@
   <div class="metrics-grid">
     <div class="metric-card">
       <div class="metric-label">Battery Level</div>
-      <div class="metric-value" [ngClass]="getBatteryClass(device.batteryLevel)">
+      <div
+        class="metric-value"
+        [ngClass]="getBatteryClass(device.batteryLevel)"
+      >
         {{ device.batteryLevel }}%
       </div>
       <div class="battery-bar">
-        <div class="battery-fill" 
-             [ngClass]="getBatteryClass(device.batteryLevel)"
-             [style.width.%]="device.batteryLevel">
-        </div>
+        <div
+          class="battery-fill"
+          [ngClass]="getBatteryClass(device.batteryLevel)"
+          [style.width.%]="device.batteryLevel"
+        ></div>
       </div>
     </div>
 
@@ -39,7 +43,7 @@
 
     <div class="metric-card">
       <div class="metric-label">Flow Rate</div>
-      <div class="metric-value">{{ device.flowRate | number:'1.1-1' }}</div>
+      <div class="metric-value">{{ device.flowRate | number : '1.1-1' }}</div>
       <div class="metric-unit">L/min</div>
     </div>
 

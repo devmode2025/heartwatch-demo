@@ -12,5 +12,5 @@ export interface AppState {
 export const reducers: ActionReducerMap<AppState> = {
   device: deviceReducer,
   patient: patientReducer,
-  alerts: alertsReducer
+  alerts: alertsReducer,
 };

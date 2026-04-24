@@ -28,7 +28,7 @@ export interface DeviceAlert {
   acknowledged: boolean;
 }
 
-export type DeviceAlertType = 
+export type DeviceAlertType =
   | 'low_battery'
   | 'pump_speed_deviation'
   | 'flow_rate_low'

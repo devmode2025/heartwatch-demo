@@ -11,7 +11,7 @@ export interface DeviceState {
 export const initialState: DeviceState = {
   device: null,
   loading: false,
-  error: null
+  error: null,
 };
 
 export const deviceReducer = createReducer(
@@ -19,21 +19,21 @@ export const deviceReducer = createReducer(
   on(DeviceActions.loadDevice, (state) => ({
     ...state,
     loading: true,
-    error: null
+    error: null,
   })),
   on(DeviceActions.loadDeviceSuccess, (state, { device }) => ({
     ...state,
     device,
     loading: false,
-    error: null
+    error: null,
   })),
   on(DeviceActions.loadDeviceFailure, (state, { error }) => ({
     ...state,
     loading: false,
-    error
+    error,
   })),
   on(DeviceActions.updateDeviceTelemetry, (state, { device }) => ({
     ...state,
-    device
+    device,
   }))
 );

@@ -14,7 +14,7 @@ export const initialState: PatientState = {
   patient: null,
   currentVitals: null,
   loading: false,
-  error: null
+  error: null,
 };
 
 export const patientReducer = createReducer(
@@ -22,21 +22,21 @@ export const patientReducer = createReducer(
   on(PatientActions.loadPatient, (state) => ({
     ...state,
     loading: true,
-    error: null
+    error: null,
   })),
   on(PatientActions.loadPatientSuccess, (state, { patient }) => ({
     ...state,
     patient,
     loading: false,
-    error: null
+    error: null,
   })),
   on(PatientActions.loadPatientFailure, (state, { error }) => ({
     ...state,
     loading: false,
-    error
+    error,
   })),
   on(PatientActions.updateVitals, (state, { vitals }) => ({
     ...state,
-    currentVitals: vitals
+    currentVitals: vitals,
   }))
 );

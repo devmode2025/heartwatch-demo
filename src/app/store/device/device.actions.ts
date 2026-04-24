@@ -2,9 +2,7 @@ import { createAction, props } from '@ngrx/store';
 import { Device } from '../../core/models/device.model';
 
 // Load device
-export const loadDevice = createAction(
-  '[Device] Load Device'
-);
+export const loadDevice = createAction('[Device] Load Device');
 
 export const loadDeviceSuccess = createAction(
   '[Device] Load Device Success',

@@ -8,7 +8,7 @@ import { Patient } from '../../core/models/patient.model';
   imports: [CommonModule],
   templateUrl: './patient-summary.component.html',
   styleUrls: ['./patient-summary.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PatientSummaryComponent {
   @Input() patient: Patient | null = null;

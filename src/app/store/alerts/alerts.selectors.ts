@@ -8,19 +8,18 @@ export const selectAllAlerts = createSelector(
   (state) => state.alerts
 );
 
-export const selectActiveAlerts = createSelector(
-  selectAllAlerts,
-  (alerts) => alerts.filter(alert => !alert.acknowledged)
+export const selectActiveAlerts = createSelector(selectAllAlerts, (alerts) =>
+  alerts.filter((alert) => !alert.acknowledged)
 );
 
 export const selectCriticalAlerts = createSelector(
   selectActiveAlerts,
-  (alerts) => alerts.filter(alert => alert.severity === 'critical')
+  (alerts) => alerts.filter((alert) => alert.severity === 'critical')
 );
 
 export const selectWarningAlerts = createSelector(
   selectActiveAlerts,
-  (alerts) => alerts.filter(alert => alert.severity === 'warning')
+  (alerts) => alerts.filter((alert) => alert.severity === 'warning')
 );
 
 export const selectAllNotes = createSelector(
@@ -28,7 +27,6 @@ export const selectAllNotes = createSelector(
   (state) => state.notes
 );
 
-export const selectRecentNotes = createSelector(
-  selectAllNotes,
-  (notes) => notes.slice(-5).reverse()
+export const selectRecentNotes = createSelector(selectAllNotes, (notes) =>
+  notes.slice(-5).reverse()
 );

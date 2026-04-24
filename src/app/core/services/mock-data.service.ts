@@ -5,10 +5,9 @@ import { Vitals } from '../models/vitals.model';
 import { Device } from '../models/device.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MockDataService {
-
   private mockPatient: Patient = {
     id: 'P001',
     firstName: 'John',
@@ -19,7 +18,7 @@ export class MockDataService {
     admissionDate: new Date('2024-01-15'),
     lastUpdated: new Date(),
     medicalRecordNumber: 'MRN-789456',
-    assignedPhysician: 'Dr. Sarah Chen'
+    assignedPhysician: 'Dr. Sarah Chen',
   };
 
   private mockDevice: Device = {
@@ -34,7 +33,7 @@ export class MockDataService {
     flowRate: 4.5,
     powerSource: 'battery',
     lastMaintenance: new Date('2024-03-01'),
-    nextMaintenanceDue: new Date('2024-06-01')
+    nextMaintenanceDue: new Date('2024-06-01'),
   };
 
   private updateCounter = 0;
@@ -56,18 +55,18 @@ export class MockDataService {
 
   private generateRandomVitals(): Vitals {
     this.updateCounter++;
-    
+
     // Every 3rd update, generate concerning vitals to trigger alerts
     const shouldGenerateAlert = this.updateCounter % 3 === 0;
-    
+
     let heartRate: number;
     let systolic: number;
     let diastolic: number;
-    
+
     if (shouldGenerateAlert) {
       // Generate out-of-range values to trigger alerts
       const alertType = Math.floor(Math.random() * 4);
-      
+
       switch (alertType) {
         case 0: // High heart rate (warning)
           heartRate = this.randomInRange(135, 145);
@@ -107,17 +106,19 @@ export class MockDataService {
       heartRate: heartRate,
       bloodPressure: {
         systolic: systolic,
-        diastolic: diastolic
+        diastolic: diastolic,
       },
       temperature: this.randomInRange(36.5, 37.5, 1),
       oxygenSaturation: this.randomInRange(96, 99),
-      respiratoryRate: this.randomInRange(14, 18)
+      respiratoryRate: this.randomInRange(14, 18),
     };
   }
 
   private randomInRange(min: number, max: number, decimals = 0): number {
     const value = Math.random() * (max - min) + min;
-    return decimals > 0 ? parseFloat(value.toFixed(decimals)) : Math.round(value);
+    return decimals > 0
+      ? parseFloat(value.toFixed(decimals))
+      : Math.round(value);
   }
 
   getHistoricalVitals(hours = 8): Vitals[] {
@@ -127,10 +128,12 @@ export class MockDataService {
     const dataPoints = (hours * 60) / intervalMinutes;
 
     for (let i = dataPoints; i >= 0; i--) {
-      const timestamp = new Date(now.getTime() - i * intervalMinutes * 60 * 1000);
+      const timestamp = new Date(
+        now.getTime() - i * intervalMinutes * 60 * 1000
+      );
       vitals.push({
         ...this.generateRandomVitals(),
-        timestamp
+        timestamp,
       });
     }
 

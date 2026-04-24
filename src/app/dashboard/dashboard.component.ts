@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { Observable, Subject, takeUntil } from 'rxjs';
@@ -13,7 +18,10 @@ import { VitalsPanelComponent } from './vitals-panel/vitals-panel.component';
 import { AlertBannerComponent } from '../shared/components/alert-banner/alert-banner.component';
 import * as PatientActions from '../store/patient/patient.actions';
 import * as DeviceActions from '../store/device/device.actions';
-import { selectPatient, selectCurrentVitals } from '../store/patient/patient.selectors';
+import {
+  selectPatient,
+  selectCurrentVitals,
+} from '../store/patient/patient.selectors';
 import { selectDevice } from '../store/device/device.selectors';
 
 @Component({
@@ -24,7 +32,7 @@ import { selectDevice } from '../store/device/device.selectors';
     PatientSummaryComponent,
     DeviceStatusComponent,
     VitalsPanelComponent,
-    AlertBannerComponent
+    AlertBannerComponent,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
@@ -34,7 +42,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   patient$: Observable<Patient | null>;
   vitals$: Observable<Vitals | null>;
   device$: Observable<Device | null>;
-  
+
   private destroy$ = new Subject<void>();
 
   constructor(
@@ -52,9 +60,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.store.dispatch(DeviceActions.loadDevice());
 
     // Subscribe to real-time vitals stream
-    this.mockDataService.getVitalsStream()
+    this.mockDataService
+      .getVitalsStream()
       .pipe(takeUntil(this.destroy$))
-      .subscribe(vitals => {
+      .subscribe((vitals) => {
         this.store.dispatch(PatientActions.updateVitals({ vitals }));
         this.store.dispatch(PatientActions.checkVitalsThresholds({ vitals }));
       });
