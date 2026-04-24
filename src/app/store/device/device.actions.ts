@@ -1,5 +1,5 @@
-﻿import { createAction, props } from '@ngrx/store';
-import { Device, DeviceTelemetry } from '../../core/models/device.model';
+import { createAction, props } from '@ngrx/store';
+import { Device } from '../../core/models/device.model';
 
 // Load device
 export const loadDevice = createAction(

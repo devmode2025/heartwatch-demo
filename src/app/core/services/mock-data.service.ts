@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable, interval, map, startWith } from 'rxjs';
 import { Patient } from '../models/patient.model';
 import { Vitals } from '../models/vitals.model';
@@ -38,8 +38,6 @@ export class MockDataService {
   };
 
   private updateCounter = 0;
-
-  constructor() { }
 
   getPatient(): Patient {
     return { ...this.mockPatient, lastUpdated: new Date() };
@@ -117,12 +115,12 @@ export class MockDataService {
     };
   }
 
-  private randomInRange(min: number, max: number, decimals: number = 0): number {
+  private randomInRange(min: number, max: number, decimals = 0): number {
     const value = Math.random() * (max - min) + min;
     return decimals > 0 ? parseFloat(value.toFixed(decimals)) : Math.round(value);
   }
 
-  getHistoricalVitals(hours: number = 8): Vitals[] {
+  getHistoricalVitals(hours = 8): Vitals[] {
     const vitals: Vitals[] = [];
     const now = new Date();
     const intervalMinutes = 5;

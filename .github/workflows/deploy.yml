@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+﻿name: Deploy to GitHub Pages
 
 on:
   push:
@@ -25,6 +25,16 @@ jobs:
           
       - name: Install dependencies
         run: npm ci
+        
+      - name: Lint code
+        run: npx nx lint heartwatch-demo
+        
+      - name: Check code formatting
+        run: npx prettier --check "src/**/*.{ts,html,scss,css,json}"
+        
+      # TODO: Enable when tests are properly configured with NgRx mocks
+      # - name: Run unit tests
+      #   run: npx nx test heartwatch-demo --watch=false
         
       - name: Build application
         run: npx nx build --configuration=production

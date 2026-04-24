@@ -9,7 +9,7 @@ export interface Alert {
   acknowledged: boolean;
   acknowledgedBy?: string;
   acknowledgedAt?: Date;
-  relatedData?: any;
+  relatedData?: Record<string, unknown>;
 }
 
 export type AlertType =
