@@ -1,6 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Device } from '../../../core/models/device.model';
+import { Device } from '../../core/models/device.model';
 
 @Component({
   selector: 'app-device-status',

@@ -1,6 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Patient } from '../../../core/models/patient.model';
+import { Patient } from '../../core/models/patient.model';
 
 @Component({
   selector: 'app-patient-summary',

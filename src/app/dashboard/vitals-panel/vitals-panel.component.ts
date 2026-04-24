@@ -1,6 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Vitals, DEFAULT_VITALS_THRESHOLDS } from '../../../core/models/vitals.model';
+import { Vitals, DEFAULT_VITALS_THRESHOLDS } from '../../core/models/vitals.model';
 
 @Component({
   selector: 'app-vitals-panel',
