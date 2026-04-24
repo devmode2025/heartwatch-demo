@@ -1,5 +1,7 @@
 ﻿# HeartWatch MCS Dashboard
 
+[![Deploy to GitHub Pages](https://github.com/devmode2025/heartwatch-demo/actions/workflows/deploy.yml/badge.svg)](https://github.com/devmode2025/heartwatch-demo/actions/workflows/deploy.yml)
+
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 
 🏥 **A real-time medical monitoring dashboard for Abbott HeartMate 3 LVAD patients**
