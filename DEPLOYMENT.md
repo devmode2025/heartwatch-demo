@@ -1,30 +1,58 @@
-# HeartWatch MCS Dashboard - Deployment Guide
+﻿# HeartWatch MCS Dashboard - Deployment Guide
 
 ## 🚀 Deployment to GitHub Pages
 
-### Prerequisites
+### ⚡ Automated Deployment (Recommended)
+
+**GitHub Actions automatically deploys on every push to main!**
+
+The project now includes a GitHub Actions workflow (.github/workflows/deploy.yml) that automatically:
+1. Builds the application
+2. Copies the CNAME file  
+3. Deploys to GitHub Pages
+
+**To deploy - just push your changes:**
+```bash
+git add .
+git commit -m "your changes"
+git push origin main
+```
+
+**Monitor deployment:**
+- **Actions page:** https://github.com/devmode2025/heartwatch-demo/actions
+- **Deployment time:** ~2-3 minutes
+- **Success:** Green checkmark ✅
+- **Failure:** Red X ❌ (click for details)
+
+---
+
+### 🔧 Manual Deployment (Alternative Method)
+
+If you need to deploy manually without committing:
+
+**Prerequisites:**
 - GitHub repository: `devmode2025/heartwatch-demo`
 - Custom domain: `demo.heartwatch.dev`
 - DNS CNAME configured: `demo.heartwatch.dev` → `devmode2025.github.io`
 
-### Build for Production
-
+**Build for Production:**
 ```bash
 # Build the application
 npx nx build --configuration=production
 
 # Copy CNAME file to dist folder
-Copy-Item -Path "CNAME" -Destination "dist\heartwatch-demo\" -Force
+cp CNAME dist/heartwatch-demo/browser/
 ```
 
-### Deploy to GitHub Pages
-
+**Deploy to GitHub Pages:**
 ```bash
 # Deploy to gh-pages branch
-npx gh-pages -d dist/heartwatch-demo -b gh-pages
+npx gh-pages -d dist/heartwatch-demo/browser -b gh-pages
 ```
 
-### GitHub Pages Configuration
+---
+
+## ⚙️ GitHub Pages Configuration
 
 1. Go to: https://github.com/devmode2025/heartwatch-demo/settings/pages
 2. Under "Build and deployment":
@@ -37,59 +65,16 @@ npx gh-pages -d dist/heartwatch-demo -b gh-pages
    - Click "Save"
    - Enable "Enforce HTTPS" (after DNS propagates)
 
-### Live URLs
+## 🌐 Live URLs
 
 - **Custom Domain:** https://demo.heartwatch.dev
 - **GitHub Pages:** https://devmode2025.github.io/heartwatch-demo/
 
-### Deployment Workflow
+---
 
-```bash
-# 1. Make changes to code
-# 2. Build for production
-npm run build
+## 📊 Build Output
 
-# 3. Copy CNAME
-Copy-Item CNAME dist/heartwatch-demo/
-
-# 4. Deploy
-npx gh-pages -d dist/heartwatch-demo -b gh-pages
-
-# 5. Wait 1-2 minutes for GitHub to deploy
-```
-
-### Troubleshooting
-
-**Issue:** Site not loading / 404 error
-- Check GitHub Pages settings are configured correctly
-- Verify gh-pages branch exists
-- Check CNAME file is in the root of gh-pages branch
-
-**Issue:** Custom domain not working
-- Verify DNS CNAME record: `dig demo.heartwatch.dev CNAME +short`
-- Should return: `devmode2025.github.io`
-- DNS propagation can take up to 24 hours
-
-**Issue:** Blank page / routing issues
-- Angular needs base href for GitHub Pages
-- Ensure build includes proper routing configuration
-
-### DNS Configuration
-
-**CNAME Record:**
-```
-demo.heartwatch.dev → devmode2025.github.io
-```
-
-Verify with:
-```bash
-dig demo.heartwatch.dev CNAME +short
-# Should return: devmode2025.github.io
-```
-
-### Build Output
-
-Production build location: `dist/heartwatch-demo/`
+Production build location: `dist/heartwatch-demo/browser/`
 
 Files included:
 - `index.html` - Main entry point
@@ -98,36 +83,30 @@ Files included:
 - `styles-*.css` - Compiled styles
 - `CNAME` - Custom domain configuration
 
-### Performance
+---
 
-- **Total Bundle Size:** ~327 KB raw / ~89 KB gzipped
-- **Load Time:** < 2 seconds on average connection
-- **Lighthouse Score Target:** 90+ Performance
+## 🔍 Troubleshooting
 
-### CI/CD (Future Enhancement)
+**Issue: Site not loading / 404 error**
+- Check GitHub Pages settings are configured correctly
+- Verify gh-pages branch exists
+- Check CNAME file is in the root of gh-pages branch
+- Wait 1-2 minutes for GitHub to deploy
 
-Consider setting up GitHub Actions to automate deployment:
+**Issue: Custom domain not working**
+- Verify DNS CNAME record: `dig demo.heartwatch.dev CNAME +short`
+- Should return: `devmode2025.github.io`
+- DNS propagation can take up to 24 hours
 
-```yaml
-# .github/workflows/deploy.yml
-name: Deploy to GitHub Pages
-on:
-  push:
-    branches: [main]
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - run: npm ci
-      - run: npx nx build --configuration=production
-      - run: cp CNAME dist/heartwatch-demo/
-      - uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/heartwatch-demo
-```
+**Issue: Build fails in GitHub Actions**
+- Check Actions tab for error logs
+- Verify all dependencies are in package.json
+- Ensure Node.js version matches (20)
+
+**Issue: Blank page / routing issues**
+- Check browser console for errors
+- Verify base href configuration
+- Check all routes are properly configured
 
 ---
 
@@ -137,3 +116,5 @@ jobs:
 - Source maps are disabled in production for security
 - NgRx DevTools are disabled in production mode
 - Mock data service generates demo alerts for presentation
+- GitHub Actions workflow runs on every push to main branch
+- Manual deployment still available if needed

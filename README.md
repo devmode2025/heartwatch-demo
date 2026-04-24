@@ -31,7 +31,7 @@ HeartWatch MCS Dashboard is a professional Angular 17 application demonstrating 
 - **Reactive Programming:** RxJS
 - **Language:** TypeScript
 - **Styling:** SCSS with CSS Grid
-- **Deployment:** GitHub Pages with custom domain
+- **Deployment:** GitHub Pages with custom domain + GitHub Actions CI/CD
 
 ## 🚀 Quick Start
 
@@ -55,6 +55,15 @@ Build artifacts are stored in `dist/heartwatch-demo/browser/`
 
 ### Deploy to GitHub Pages
 
+**Automated (Recommended):**
+```bash
+# Just push to main - GitHub Actions handles the rest!
+git add .
+git commit -m "your changes"
+git push origin main
+```
+
+**Manual (Alternative):**
 ```bash
 # Build
 npx nx build --configuration=production
