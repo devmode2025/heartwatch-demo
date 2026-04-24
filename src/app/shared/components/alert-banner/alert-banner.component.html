@@ -1,0 +1,42 @@
+<div class="alert-banner-container" *ngIf="(activeAlerts$ | async) as alerts">
+  <div class="alert-banner" *ngIf="alerts.length > 0">
+    <div class="alert-header">
+      <div class="alert-count">
+        <span class="critical-badge" *ngIf="(criticalAlerts$ | async)?.length as criticalCount">
+          {{ criticalCount }} Critical
+        </span>
+        <span class="warning-badge" *ngIf="(warningAlerts$ | async)?.length as warningCount">
+          {{ warningCount }} Warning
+        </span>
+      </div>
+    </div>
+
+    <div class="alerts-list">
+      <div *ngFor="let alert of alerts" 
+           class="alert-item"
+           [ngClass]="'severity-' + alert.severity">
+        <div class="alert-icon">
+          {{ getAlertIcon(alert.severity) }}
+        </div>
+        
+        <div class="alert-content">
+          <div class="alert-title">{{ alert.title }}</div>
+          <div class="alert-message">{{ alert.message }}</div>
+          <div class="alert-time">{{ getTimeSince(alert.timestamp) }}</div>
+        </div>
+
+        <div class="alert-actions">
+          <button *ngIf="!alert.acknowledged" 
+                  class="btn-acknowledge"
+                  (click)="acknowledgeAlert(alert.id)">
+            Acknowledge
+          </button>
+          <button class="btn-dismiss" 
+                  (click)="dismissAlert(alert.id)">
+            ✕
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

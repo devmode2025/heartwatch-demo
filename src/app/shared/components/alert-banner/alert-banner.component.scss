@@ -1,0 +1,178 @@
+.alert-banner-container {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin-bottom: 1rem;
+}
+
+.alert-banner {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.alert-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alert-count {
+  display: flex;
+  gap: 1rem;
+}
+
+.critical-badge,
+.warning-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.critical-badge {
+  background: #dc3545;
+  color: white;
+}
+
+.warning-badge {
+  background: #ffc107;
+  color: #333;
+}
+
+.alerts-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.alert-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem;
+  border-left: 4px solid transparent;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background: #f8f9fa;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &.severity-critical {
+    border-left-color: #dc3545;
+    background: #fff5f5;
+
+    &:hover {
+      background: #ffe5e5;
+    }
+  }
+
+  &.severity-warning {
+    border-left-color: #ffc107;
+    background: #fffbf0;
+
+    &:hover {
+      background: #fff3cd;
+    }
+  }
+
+  &.severity-info {
+    border-left-color: #17a2b8;
+    background: #f0f9ff;
+
+    &:hover {
+      background: #e0f3ff;
+    }
+  }
+}
+
+.alert-icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.alert-content {
+  flex: 1;
+}
+
+.alert-title {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.alert-message {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 0.25rem;
+}
+
+.alert-time {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.alert-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 1rem;
+}
+
+.btn-acknowledge,
+.btn-dismiss {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-acknowledge {
+  background: #28a745;
+  color: white;
+
+  &:hover {
+    background: #218838;
+  }
+}
+
+.btn-dismiss {
+  background: #6c757d;
+  color: white;
+  padding: 0.5rem 0.75rem;
+
+  &:hover {
+    background: #5a6268;
+  }
+}

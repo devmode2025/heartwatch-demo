@@ -10,6 +10,7 @@ import { MockDataService } from '../core/services/mock-data.service';
 import { PatientSummaryComponent } from './patient-summary/patient-summary.component';
 import { DeviceStatusComponent } from './device-status/device-status.component';
 import { VitalsPanelComponent } from './vitals-panel/vitals-panel.component';
+import { AlertBannerComponent } from '../shared/components/alert-banner/alert-banner.component';
 import * as PatientActions from '../store/patient/patient.actions';
 import * as DeviceActions from '../store/device/device.actions';
 import { selectPatient, selectCurrentVitals } from '../store/patient/patient.selectors';
@@ -22,7 +23,8 @@ import { selectDevice } from '../store/device/device.selectors';
     CommonModule,
     PatientSummaryComponent,
     DeviceStatusComponent,
-    VitalsPanelComponent
+    VitalsPanelComponent,
+    AlertBannerComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
