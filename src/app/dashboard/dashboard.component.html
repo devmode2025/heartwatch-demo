@@ -1,0 +1,46 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>HeartWatch MCS Dashboard</h1>
+    <div class="header-subtitle">Real-time Patient Monitoring System</div>
+  </header>
+
+  <div class="dashboard-grid">
+    <!-- Patient Summary - Full width top -->
+    <div class="grid-item patient-summary-section">
+      <app-patient-summary 
+        [patient]="patient$ | async"
+        [lastUpdated]="(vitals$ | async)?.timestamp || null">
+      </app-patient-summary>
+    </div>
+
+    <!-- Device Status - Left column -->
+    <div class="grid-item device-section">
+      <app-device-status 
+        [device]="device$ | async">
+      </app-device-status>
+    </div>
+
+    <!-- Vitals Panel - Right column -->
+    <div class="grid-item vitals-section">
+      <app-vitals-panel 
+        [vitals]="vitals$ | async">
+      </app-vitals-panel>
+    </div>
+
+    <!-- Trend Chart Placeholder - Full width -->
+    <div class="grid-item chart-section">
+      <div class="placeholder-card">
+        <h3>Vital Signs Trend Chart</h3>
+        <p class="placeholder-text">Chart visualization coming in Phase 4</p>
+      </div>
+    </div>
+
+    <!-- Notes List Placeholder - Right sidebar -->
+    <div class="grid-item notes-section">
+      <div class="placeholder-card">
+        <h3>Patient Notes</h3>
+        <p class="placeholder-text">Notes list coming in Phase 5</p>
+      </div>
+    </div>
+  </div>
+</div>
