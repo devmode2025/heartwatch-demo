@@ -29,9 +29,8 @@ jobs:
       - name: Lint code
         run: npx nx lint heartwatch-demo
         
-      # Temporarily disabled - formatting check
-      # - name: Check code formatting
-      #   run: npx prettier --check "src/**/*.{ts,html,scss,css,json}"
+      - name: Check code formatting
+        run: npx prettier --check "src/**/*.{ts,html,scss,css,json}"
         
       # TODO: Enable when tests are properly configured with NgRx mocks
       # - name: Run unit tests
