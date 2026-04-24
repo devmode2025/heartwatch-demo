@@ -1,0 +1,53 @@
+<div class="device-status" *ngIf="device">
+  <div class="device-header">
+    <h3>Device Status</h3>
+    <div class="status-indicator" [ngClass]="getStatusClass(device.status)">
+      {{ device.status | uppercase }}
+    </div>
+  </div>
+
+  <div class="device-info">
+    <div class="info-row">
+      <span class="info-label">Device Type:</span>
+      <span class="info-value">{{ device.deviceType }}</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Serial Number:</span>
+      <span class="info-value">{{ device.serialNumber }}</span>
+    </div>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-label">Battery Level</div>
+      <div class="metric-value" [ngClass]="getBatteryClass(device.batteryLevel)">
+        {{ device.batteryLevel }}%
+      </div>
+      <div class="battery-bar">
+        <div class="battery-fill" 
+             [ngClass]="getBatteryClass(device.batteryLevel)"
+             [style.width.%]="device.batteryLevel">
+        </div>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-label">Pump Speed</div>
+      <div class="metric-value">{{ device.pumpSpeed }}</div>
+      <div class="metric-unit">RPM</div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-label">Flow Rate</div>
+      <div class="metric-value">{{ device.flowRate | number:'1.1-1' }}</div>
+      <div class="metric-unit">L/min</div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-label">Power Source</div>
+      <div class="metric-value power-source">
+        {{ device.powerSource | titlecase }}
+      </div>
+    </div>
+  </div>
+</div>

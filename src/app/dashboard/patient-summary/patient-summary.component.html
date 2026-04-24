@@ -1,0 +1,30 @@
+<div class="patient-summary" *ngIf="patient">
+  <div class="patient-header">
+    <h2 class="patient-name">{{ patient.firstName }} {{ patient.lastName }}</h2>
+    <span class="patient-mrn">MRN: {{ patient.medicalRecordNumber }}</span>
+  </div>
+  
+  <div class="patient-details">
+    <div class="detail-item">
+      <span class="label">Age:</span>
+      <span class="value">{{ patient.age }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="label">Gender:</span>
+      <span class="value">{{ patient.gender }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="label">Device:</span>
+      <span class="value">{{ patient.deviceType }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="label">Physician:</span>
+      <span class="value">{{ patient.assignedPhysician }}</span>
+    </div>
+  </div>
+  
+  <div class="last-updated" *ngIf="lastUpdated">
+    <span class="update-label">Last Updated:</span>
+    <span class="update-time">{{ lastUpdated | date:'short' }}</span>
+  </div>
+</div>

@@ -1,0 +1,147 @@
+.device-status {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.device-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  
+  h3 {
+    margin: 0;
+    color: #0054a6;
+    font-size: 1.25rem;
+  }
+}
+
+.status-indicator {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  
+  &.status-online {
+    background: #d4edda;
+    color: #155724;
+  }
+  
+  &.status-warning {
+    background: #fff3cd;
+    color: #856404;
+  }
+  
+  &.status-critical {
+    background: #f8d7da;
+    color: #721c24;
+  }
+  
+  &.status-offline {
+    background: #e2e3e5;
+    color: #383d41;
+  }
+}
+
+.device-info {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.info-label {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.info-value {
+  font-weight: 500;
+  color: #333;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.metric-card {
+  text-align: center;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metric-value {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #0054a6;
+  
+  &.battery-critical {
+    color: #dc3545;
+  }
+  
+  &.battery-warning {
+    color: #ffc107;
+  }
+  
+  &.battery-good {
+    color: #28a745;
+  }
+  
+  &.power-source {
+    font-size: 1.25rem;
+  }
+}
+
+.metric-unit {
+  font-size: 0.75rem;
+  color: #999;
+  margin-top: 0.25rem;
+}
+
+.battery-bar {
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.battery-fill {
+  height: 100%;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  
+  &.battery-critical {
+    background: #dc3545;
+  }
+  
+  &.battery-warning {
+    background: #ffc107;
+  }
+  
+  &.battery-good {
+    background: #28a745;
+  }
+}
